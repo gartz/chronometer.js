@@ -1,23 +1,23 @@
 {
-  "name": "Chronometer.js",
+  "name": "chronometer.js",
   "description": "A Javascript chronometer object, that uses ObjectEventTarget to trigger it events",
-  "version": "0.1.0",
-  "homepage": "https://github.com/gartz/Chronometer.js/",
+  "version": "1.0.0",
+  "homepage": "https://github.com/gartz/chronometer.js/",
   "author": {
     "name": "Gabriel Reitz Giannattasio <gabriel@gartz.com.br>",
     "url": "http://gartz.com.br"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gartz/Chronometer.js.git"
+    "url": "https://github.com/gartz/chronometer.js.git"
   },
   "bugs": {
-    "url": "https://github.com/gartz/Chronometer.js/issues"
+    "url": "https://github.com/gartz/chronometer.js/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/gartz/Chronometer.js/blob/master/LICENSE-MIT"
+      "url": "https://github.com/gartz/chronometer.js/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Grunt.js",
