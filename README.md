@@ -3,6 +3,8 @@ chronometer.js
 
 This is just a chornometer constructor in JavaScript, that uses ObjectEventTarget as prototype to support events listeners.
 
+[**DEMO PAGE**](http://gartz.github.io/chronometer.js/)
+
 Motivation
 ----------
 
@@ -107,3 +109,9 @@ There is no private methods, except by the instance `ChronometerStep` that only 
 `autoUpdateID` is an common example of how prototypes mean to be used if you want to give abbility to prototype any new constructor. If you want to hide it value from the other programmers, the only way is to use a *WeakMap* for that, and keep the methods that depends on it in the prototype, or create the method `autoUpdate` with a closure inside the constructor, but it's more code, memory mess just to protect other programmers from doing mistake with it. Doesn't worth.
 
 If your browser has support to `Object.defineProperties`, it will add all methods as not enumerable, if you do a for in, they will not be iterated. But if you plan to give support to IE-9, use hasOwnProperty or a shim to ensure that behaviour.
+
+Files
+-----
+
+* **chrnometer.js**: Chronometer constructor and prototype logic.
+* **demo.js**: Used by index.html to create a demo biding in the DOM.
