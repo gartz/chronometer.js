@@ -33,6 +33,7 @@
       this.RUNNING = 1;
       this.PAUSED = 2;
 
+      // Public methods:
       this.start = function (){
         // Starts the counter
 
@@ -93,7 +94,6 @@
         this.steps.push( this.createStep() );
         this.dispatchEvent( new ObjectEvent('stepinserted') );
         this.setState(Chronometer.prototype.PAUSED);
-        this.dispatchEvent(new ObjectEvent('state'));
 
         return this;
       };
@@ -112,6 +112,17 @@
         }
         return this;
       };
+      this.isStopped = function (){
+        return this.state === Chronometer.prototype.STOPPED;
+      };
+      this.isRunning = function (){
+        return this.state === Chronometer.prototype.RUNNING;
+      };
+      this.isPaused = function (){
+        return this.state === Chronometer.prototype.PAUSED;
+      };
+
+      // Private methods
       this.update = function (){
         // Update the elipsedTime
 
@@ -166,16 +177,13 @@
         this.dispatchEvent(new ObjectEvent('state'), {detail: oldState});
         return this;
       };
-      this.isStopped = function (){
-        return this.state === Chronometer.prototype.STOPPED;
-      };
-      this.isRunning = function (){
-        return this.state === Chronometer.prototype.RUNNING;
-      };
-      this.isPaused = function (){
-        return this.state === Chronometer.prototype.PAUSED;
-      };
+      
       this.autoUpdate = function (){
+        // Start internal recursive timeout to update the values and trigger
+        // update event, if the state change to PAUSED or STOPPED it will clearTimeout
+        // and only start again when you start the chronometer.
+        // You can change the update interval in the public variable `updateInterval`
+
         var that = this;
         function bindUpdate(){
           that.update();
