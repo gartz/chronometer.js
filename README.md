@@ -97,8 +97,6 @@ function FancyChronometer( name ){
 FancyChronometer.prototype = Chronometer.prototype;
 ```
 
-The advantages of doing by mixing is if the chronometer is updated, your extended constructor will not break, but in a cost of a small loop proprierties mixing.
-
 Architecture
 ------------
 
