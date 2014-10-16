@@ -98,7 +98,8 @@
         return this;
       };
       this.step = function (){
-        // Add a new step, without changing the state, so you can track a moment, like a completed lap
+        // Add a new step, without changing the state, so you can track a moment
+        // Example: a completed lap
 
         var step = this.createStep(Date.now());
         // Update before add a new step
@@ -177,7 +178,7 @@
         this.dispatchEvent(new ObjectEvent('state'), {detail: oldState});
         return this;
       };
-      
+
       this.autoUpdate = function (){
         // Start internal recursive timeout to update the values and trigger
         // update event, if the state change to PAUSED or STOPPED it will clearTimeout
@@ -217,17 +218,31 @@
     var definePropertiesArgs = function (prototype){
       var props = {};
       for (var k in prototype) {
-        props[k] = {
-          value: prototype[k],
-          enumerable: false
-        };
+        if (prototype.hasOwnProperty(k)) {
+          props[k] = {
+            value: prototype[k],
+            enumerable: false
+          };
+        }
       }
       return [prototype, props];
     };
-    
+
     // Chronometer.prototype remove enumerable prototype
     Object.defineProperties.apply(Object, definePropertiesArgs(Chronometer.prototype));
   }
 
+  // Expose to global
+  if (typeof window === 'undefined'){
+    // jshint node:true
+    root = global;
+  }
   root.Chronometer = Chronometer;
+
+  // Export as module to nodejs
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+    module.exports = {
+      Chronometer: ObjectEventTarget
+    };
+  }
 })(this);
