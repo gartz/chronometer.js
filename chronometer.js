@@ -4,6 +4,12 @@
   var ObjectEventTarget = root.ObjectEventTarget;
   var ObjectEvent = root.ObjectEvent;
 
+  // jshint node:true
+  if (typeof global !== 'undefined'){
+    ObjectEventTarget = require('ObjectEventTarget').ObjectEventTarget;
+    ObjectEvent = require('ObjectEventTarget').ObjectEvent;
+  }
+
   function ChronometerStep(forceTime){
     // Internal used to populate the steps array
 
@@ -234,7 +240,6 @@
 
   // Expose to global
   if (typeof window === 'undefined'){
-    // jshint node:true
     root = global;
   }
   root.Chronometer = Chronometer;
