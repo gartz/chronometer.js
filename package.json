@@ -1,7 +1,7 @@
 {
   "name": "chronometer.js",
   "description": "A Javascript chronometer object, that uses ObjectEventTarget to trigger it events",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/gartz/chronometer.js/",
   "author": {
     "name": "Gabriel Reitz Giannattasio <gabriel@gartz.com.br>",
@@ -20,7 +20,7 @@
       "url": "https://github.com/gartz/chronometer.js/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Grunt.js",
+  "main": "chronometer.js",
   "engines": {
     "node": ">= 0.10.0"
   },
