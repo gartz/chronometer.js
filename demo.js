@@ -40,21 +40,21 @@ $(function(){
   chronometer.addEventListener('stopped', function(){
     var humanTime = moment(this.stopTime).format(timeFormat);
     $stopTime.text(humanTime);
-    $relative.text(moment(this.elipsedTime).format('mm:ss.SSS'));
+    $relative.text(moment(this.elapsedTime).format('mm:ss.SSS'));
   });
 
   // When update delegate to relative DOM element
   chronometer.addEventListener('updated', function (){
-    $relative.text(moment(this.elipsedTime).format('mm:ss.SSS'));
+    $relative.text(moment(this.elapsedTime).format('mm:ss.SSS'));
   });
 
   // Show steps on the DOM
   chronometer.addEventListener('stepinserted', function (event){
     var $currentStep = $('<li></li>');
 
-    var elipsed = moment( this.elipsedTime ).format('mm:ss.SSS');
+    var elapsed = moment( this.elapsedTime ).format('mm:ss.SSS');
     var date = moment( this.steps[this.steps.length - 1].pauseTime ).format(timeFormat);
-    $currentStep.text(elipsed + ' at ' + date);
+    $currentStep.text(elapsed + ' at ' + date);
     $steps.append($currentStep);
   });
 

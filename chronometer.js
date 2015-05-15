@@ -15,7 +15,7 @@
 
     this.pauseTime = forceTime || Date.now();
     this.unpauseTime = 0;
-    this.elipsedTime = 0;
+    this.elapsedTime = 0;
     this.lapTime = 0;
   }
   ChronometerStep.prototype.unpause = function(forceTime){
@@ -24,7 +24,7 @@
   };
 
   function Chronometer(){
-    // A Chronometer can track elipsed time from start to stop
+    // A Chronometer can track elapsed time from start to stop
     // Also can store steps in the way, or pause and start from
     // the paused moment, you can get metrics of time with it
     // and it also support events for easy integration with other
@@ -131,7 +131,7 @@
 
       // Private methods
       this.update = function (){
-        // Update the elipsedTime
+        // Update the elapsedTime
 
         // Set next auto update
         this.autoUpdate();
@@ -139,23 +139,23 @@
         if (!this.dispatchEvent( new ObjectEvent('update', {cancelable: true})) ){
           return this;
         }
-        var elipsedTime = this.startTime;
+        var elapsedTime = this.startTime;
         var step;
         for (var i = 0, m = this.steps.length; i < m; i++){
           step = this.steps[i];
           if (step.unpauseTime){
-            elipsedTime += step.unpauseTime - step.pauseTime;
+            elapsedTime += step.unpauseTime - step.pauseTime;
           }
         }
-        elipsedTime = (this.stopTime ? this.stopTime : Date.now()) - elipsedTime;
-        this.elipsedTime = elipsedTime;
+        elapsedTime = (this.stopTime ? this.stopTime : Date.now()) - elapsedTime;
+        this.elapsedTime = elapsedTime;
         if (step){
-          step.elipsedTime = elipsedTime;
+          step.elapsedTime = elapsedTime;
           var lastStep = this.steps[i - 2];
           if (lastStep){
-            step.lapTime = elipsedTime - lastStep.elipsedTime;
+            step.lapTime = elapsedTime - lastStep.elapsedTime;
           } else {
-            step.lapTime = elipsedTime;
+            step.lapTime = elapsedTime;
           }
         }
         this.dispatchEvent( new ObjectEvent('updated') );
@@ -208,12 +208,12 @@
     this.startTime = 0;
     this.stopTime = 0;
     this.steps = [];
-    this.elipsedTime = 0;
+    this.elapsedTime = 0;
     this.autoUpdateID = null;
 
     // Settings properties
 
-    // Time in miliseconds between each update event is triggered
+    // Time in milliseconds between each update event is triggered
     this.updateInterval = 50;
   }
   Chronometer.prototype = ObjectEventTarget.prototype;

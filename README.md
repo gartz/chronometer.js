@@ -1,7 +1,7 @@
 chronometer.js
 ==============
 
-This is just a chornometer constructor in JavaScript, that uses ObjectEventTarget as prototype to support events listeners.
+This is just a chronometer constructor in JavaScript, that uses ObjectEventTarget as prototype to support events listeners.
 
 [**DEMO PAGE**](http://gartz.github.io/chronometer.js/)
 
@@ -10,7 +10,7 @@ Motivation
 
 I want to create a demo how to use the ObjectEventTarget and inspire other JavaScript programmers to use prototype.
 
-Nothing better then a project that envolves a logical part that can be tottaly separated from the design, and also have it owns events. This will allow you do alot of things, so you also can prototype your function with the chronometer, creating a more sofisticate object.
+Nothing better then a project that evolves a logical part that can be totally separated from the design, and also have it owns events. This will allow you do a lot of things, so you also can prototype your function with the chronometer, creating a more sophisticate object.
 
 How to use
 ----------
@@ -24,9 +24,9 @@ Methods
 
 * **start()**: Start your chronometer
 * **stop()**: Stop your chronometer (next time you start, it will reset the properties)
-* **pause()**: It will pause your chronometer, addeding a step to it, the time paused is not computed as `elipsedTime`, you can call `start()` to continue tracking the time
+* **pause()**: It will pause your chronometer, adding a step to it, the time paused is not computed as `elapsedTime`, you can call `start()` to continue tracking the time
 * **step()**: It also create a step, but will not pause, very useful if you want to track laps
-* **update()**: It will update the values of the `elipsedTime` from global and current step.
+* **update()**: It will update the values of the `elapsedTime` from global and current step.
 * **isRunning()**: Return true when it's running
 * **isPaused()**: Return true when it's paused
 * **isStopped()**: Return true when it's stopped
@@ -42,7 +42,7 @@ Properties
 
 ** Read-write properties:**
 
-* **updateInterval**: *number* (default: 50) miliseconds between each time `update` will be triggered by the `autoUpdate`.
+* **updateInterval**: *number* (default: 50) milliseconds between each time `update` will be triggered by the `autoUpdate`.
 
 ** Read-only properties:
 
@@ -50,7 +50,7 @@ Properties
 * **startTime**: *Timestamp* with register when chronometer start running.
 * **stopTime**: *Timestamp* with register when chronometer stop running.
 * **steps**: *array* with the `ChronometerStep` instances for each time you *pause* or *step*.
-* **elipsedTime**: *number* in miliseconds of the elipsed time from when you started the chronometer, will be updated by any action or *autoUpdate*.
+* **elapsedTime**: *number* in milliseconds of the elapsed time from when you started the chronometer, will be updated by any action or *autoUpdate*.
 
 **Internal use properties:**
 
@@ -59,21 +59,21 @@ Properties
 Events
 ------
 
-Events are providen by [ObjectEventTarget](https://github.com/gartz/ObjectEventTarget) prototype, means that you can use **addEventListener**, **removeEventListener** or **dispatchEvent** in any instance of *chronometer*.
+Events are provided by [ObjectEventTarget](https://github.com/gartz/ObjectEventTarget) prototype, means that you can use **addEventListener**, **removeEventListener** or **dispatchEvent** in any instance of *chronometer*.
 
 **Cancelable Events:**
 
 * **start**: Dispatched when is about to start the chronometer.
 * **stop**: Dispatched when is about to stop the chronometer.
 * **step**: Dispatched when a step is about to be pushed.
-* **update**: Dispateched when is about to update the chronometer properties and it steps.
+* **update**: Dispatched when is about to update the chronometer properties and it steps.
 
 **Non-cancelable Events:**
 
 * **started**: When the chronometer has been started.
 * **stopped**: When the chronometer has been stopped.
-* **stepinserted**: Everytime a step is pushed in the steps array.
-* **updated**: Everytime that the chronometer properties are updated (good if you want to update your DOM)
+* **stepinserted**: Every time a step is pushed in the steps array.
+* **updated**: Every time that the chronometer properties are updated (good if you want to update your DOM)
 * **state**: When a state is changed (the `event` contains a `detail` property with the old state value).
 
 Constants
@@ -111,5 +111,5 @@ If your browser has support to `Object.defineProperties`, it will add all method
 Files
 -----
 
-* **chrnometer.js**: Chronometer constructor and prototype logic.
+* **chronometer.js**: Chronometer constructor and prototype logic.
 * **demo.js**: Used by index.html to create a demo biding in the DOM.
