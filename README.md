@@ -17,6 +17,15 @@ How to use
 
 You just need to create a instance or more using `new Chronometer()`, then you are good to go.
 
+NPM Install
+-----------
+
+```
+npm install chronometer.js
+```
+
+It works fine in Nodejs and with Browserify, you can do a `var Chronometer = require('chronometer.js');` and you are ready to go.
+
 Methods
 -------
 
