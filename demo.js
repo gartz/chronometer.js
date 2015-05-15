@@ -9,6 +9,13 @@ $(function(){
   var $steps = $('#steps');
   var timeFormat = 'MMMM Do YYYY, h:mm:ss a';
 
+  var dateZero = new Date();
+  dateZero.setHours(0);
+  dateZero.setMinutes(0);
+  dateZero.setSeconds(0);
+  dateZero.setMilliseconds(0);
+  dateZero = dateZero.getTime();
+
   // Create my chronometer instance
   var chronometer = new Chronometer();
 
@@ -40,19 +47,19 @@ $(function(){
   chronometer.addEventListener('stopped', function(){
     var humanTime = moment(this.stopTime).format(timeFormat);
     $stopTime.text(humanTime);
-    $relative.text(moment(this.elapsedTime).format('mm:ss.SSS'));
+    $relative.text(moment(dateZero + this.elapsedTime).format('HH:mm:ss.SSS'));
   });
 
   // When update delegate to relative DOM element
   chronometer.addEventListener('updated', function (){
-    $relative.text(moment(this.elapsedTime).format('mm:ss.SSS'));
+    $relative.text(moment(dateZero + this.elapsedTime).format('HH:mm:ss.SSS'));
   });
 
   // Show steps on the DOM
-  chronometer.addEventListener('stepinserted', function (event){
+  chronometer.addEventListener('stepinserted', function (){
     var $currentStep = $('<li></li>');
 
-    var elapsed = moment( this.elapsedTime ).format('mm:ss.SSS');
+    var elapsed = moment( dateZero + this.elapsedTime ).format('HH:mm:ss.SSS');
     var date = moment( this.steps[this.steps.length - 1].pauseTime ).format(timeFormat);
     $currentStep.text(elapsed + ' at ' + date);
     $steps.append($currentStep);
